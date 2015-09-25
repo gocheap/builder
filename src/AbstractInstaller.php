@@ -11,5 +11,7 @@ abstract class AbstractInstaller {
 
     }
 
-    public static function checkHash($hashurl_template, $version, $file, ConsoleLogger $logger)
+    public static function checkHash($hashurl_template, $version, $file, ConsoleLogger $logger) {
+
+    }
 }

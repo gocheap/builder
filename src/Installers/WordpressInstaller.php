@@ -1,5 +1,5 @@
 <?php
-namespace wapmorgan\Builder\Repository;
+namespace wapmorgan\Builder\Installers;
 
 use wapmorgan\Builder\AbstractInstaller;
 
