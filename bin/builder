@@ -1,0 +1,8 @@
+#!/usr/bin/php
+<?php
+require_once __DIR__.'/../vendor/autoload.php';
+
+$build = new \wapmorgan\Builder\Commands\BuildCommand();
+$app = new \Cilex\Application('Builder', '1.0-'.date('Ymd', filemtime(__FILE__)));
+$app->command($build);
+$app->run();
