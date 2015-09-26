@@ -20,8 +20,7 @@ class BuildCommand extends Command {
             ->setDescription('Bootstrap and set up a script')
             ->addArgument('name', InputArgument::REQUIRED, 'What script do you want install?')
             ->addArgument('version', InputArgument::OPTIONAL, 'What version of script do you want install?')
-            ->addOption('configuration', 'c', InputOption::VALUE_REQUIRED, 'You can pass name of file that contains information about script (supports different file formats)')
-            ->addOption('interactive', 'i', InputOption::VALUE_NONE, 'If you use this option, script will ask you for missing configuration directives');
+            ->addOption('configuration', 'c', InputOption::VALUE_REQUIRED, 'You can pass name of file that contains information about script (supports different file formats)');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
@@ -37,6 +36,7 @@ class BuildCommand extends Command {
                 $output->writeln('<error>Error! File '.$configuration.' is not found!</error>');
                 return false;
             }
+            $configuration = realpath($configuration);
             $output->writeln('<info>Retrieving information from config file</info>');
             $reader = new ConfigurationReader($configuration);
             $repository = $reader->getRepository();
@@ -99,6 +99,10 @@ class BuildCommand extends Command {
                         $output->writeln('<error>Unexpected error occured during this step</error>');
                         return false;
                     }
+                    break;
+
+                case 'user':
+                    $result = call_user_func(array($installer, $step['trigger']), isset($repository) ? array_merge($data, $repository->getArray()) : $data, getcwd(), $logger);
                     break;
             }
         }
