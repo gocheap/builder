@@ -16,7 +16,8 @@
     "hashsum_url": "https://wordpress.org/wordpress-{%version}.zip.md5",
     "steps": [
         {"action": "download", "message": "Downloading wordpress distributive ..."},
-        {"action": "extract", "message": "Extracting wordpress distributive ..."},
+        {"action": "checkhash", "message": "Checking hash of wordpress distributive ..."},
+        {"action": "extract", "message": "Extracting wordpress distributive ...", "prefix_folder": "wordpress/"},
         {"action": "user", "trigger": "createConfiguration", "message": "Creating configuration ..."}
     ]
 }

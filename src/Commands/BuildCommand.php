@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Question\ChoiceQuestion;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 
 class BuildCommand extends Command {
     protected function configure() {
@@ -24,6 +25,7 @@ class BuildCommand extends Command {
 
     protected function execute(InputInterface $input, OutputInterface $output) {
         $script = $input->getArgument('name');
+        $logger = new ConsoleLogger($output);
         $output->writeln('<info>Looking for available versions for '.$script.'</info>');
 
         $version = $input->getArgument('version');
@@ -69,11 +71,40 @@ class BuildCommand extends Command {
         }
 
         foreach ($data['steps'] as $i => $step) {
+            $output->writeln('<info>'.$step['message'].'</info>');
             switch ($step['action']) {
                 case 'download':
+                    $archive_tmp = tempnam(sys_get_temp_dir(), 'builder');
+                    $result = call_user_func(array($installer, 'download'), $data['download_url'], $version, $archive_tmp, $logger);
+                    if (!$result) {
+                        $output->writeln('<error>Unexpected error occured during this step</error>');
+                        return false;
+                    }
+                    break;
+
+                case 'checkhash':
+                    if (!isset($archive_tmp))
+                        throw new Exception('Inconsistency in steps! There should be `download` action before `checkhash` action!');
+                    $result = call_user_func(array($installer, 'checkhash'), $data['hashsum_url'], $version, $archive_tmp, $logger);
+                    if (!$result) {
+                        $output->writeln('<error>Unexpected error occured during this step</error>');
+                        return false;
+                    }
+                    break;
+
+                case 'extract':
+                    $result = call_user_func(array($installer, 'extract'), $archive_tmp, getcwd(), isset($step['prefix_folder']) ? $step['prefix_folder'] : null, $logger);
+                    if (!$result) {
+                        $output->writeln('<error>Unexpected error occured during this step</error>');
+                        return false;
+                    }
                     break;
             }
         }
+
+        // clean up
+        if (isset($archive_tmp))
+            call_user_func(array($installer, 'clean'), $archive_tmp, $logger);
     }
 
     protected function loadInformation($name) {
