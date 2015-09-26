@@ -20,7 +20,8 @@ class BuildCommand extends Command {
             ->setDescription('Bootstrap and set up a script')
             ->addArgument('name', InputArgument::REQUIRED, 'What script do you want install?')
             ->addArgument('version', InputArgument::OPTIONAL, 'What version of script do you want install?')
-            ->addOption('configuration', 'c', InputOption::VALUE_REQUIRED, 'You can pass name of file that contains information about script (supports different file formats)');
+            ->addOption('configuration', 'c', InputOption::VALUE_REQUIRED, 'You can pass name of file that contains information about script (supports different file formats)')
+            ->addOption('interactive', 'i', InputOption::VALUE_NONE, 'If you use this option, script will ask you for missing configuration directives');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output) {
