@@ -110,6 +110,9 @@ class BuildCommand extends Command {
         // clean up
         if (isset($archive_tmp))
             call_user_func(array($installer, 'clean'), $archive_tmp, $logger);
+
+        $output->writeln('<info>Successfully installed '.$script.' '.$version.'</info>');
+        return true;
     }
 
     protected function loadInformation($name) {

@@ -18,6 +18,7 @@
         {"action": "download", "message": "Downloading wordpress distributive ..."},
         {"action": "checkhash", "message": "Checking hash of wordpress distributive ..."},
         {"action": "extract", "message": "Extracting wordpress distributive ...", "prefix_folder": "wordpress/"},
-        {"action": "user", "trigger": "createConfiguration", "message": "Creating configuration ..."}
+        {"action": "user", "trigger": "createConfiguration", "message": "Creating configuration ..."},
+        {"action": "user", "trigger": "installDatabase", "message": "Installing database and creating user ..."}
     ]
 }

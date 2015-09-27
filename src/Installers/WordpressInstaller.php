@@ -15,10 +15,53 @@ class WordpressInstaller extends AbstractInstaller {
                 throw new Exception('Inconsistency in wordpress directory "'.$directory.'". File wp-config-sample.php does not exist!');
             if (!copy($directory.DIRECTORY_SEPARATOR.'wp-config-sample.php', $directory.DIRECTORY_SEPARATOR.'wp-config.php'))
                 throw new Exception('Could not copy sample configuration to original configuration in directory "'.$directory.'"!');
-
+            $fp = file_get_contents($directory.DIRECTORY_SEPARATOR.'wp-config.php');
+            $fp = preg_replace(array(
+                    '~define\((\'|")DB_NAME(\'|"),\s+(\'|").+(\'|")\)\;~',
+                    '~define\((\'|")DB_USER(\'|"),\s+(\'|").+(\'|")\)\;~',
+                    '~define\((\'|")DB_PASSWORD(\'|"),\s+(\'|").+(\'|")\)\;~',
+                    '~define\((\'|")DB_HOST(\'|"),\s+(\'|").+(\'|")\)\;~'
+                ),
+                array(
+                    'define("DB_NAME", "'.$data['database']['database'].'");',
+                    'define("DB_USER", "'.$data['database']['username'].'");',
+                    'define("DB_PASSWORD", "'.$data['database']['password'].'");',
+                    'define("DB_HOST", "'.$data['database']['host'].'");'
+                ), $fp);
+            file_put_contents($directory.DIRECTORY_SEPARATOR.'wp-config.php', $fp);
+            $logger->log(LogLevel::INFO, 'Configuration saved');
         } else {
             $logger->log(LogLevel::NOTICE, 'Skipping step due to missing database configuration');
             return true;
         }
+    }
+
+    static public function installDatabase(array $data, $directory, ConsoleLogger $logger) {
+        if (!isset($data['blog_title'])) {
+            $logger->log(LogLevel::NOTICE, 'Skipping step due to missing blog configuration');
+            return true;
+        }
+
+        define('WP_INSTALLING', true);
+        require_once $directory.DIRECTORY_SEPARATOR.'wp-config.php';
+        // require_once $directory.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'wp-db.php';
+        require_once $directory.DIRECTORY_SEPARATOR.'wp-admin'.DIRECTORY_SEPARATOR.'upgrade-functions.php';
+
+        if (!function_exists('wp_install')) {
+            $logger->log(LogLevel::WARNING, 'Could not find function "wp_install" in file "'.$directory.DIRECTORY_SEPARATOR.'wp-admin'.DIRECTORY_SEPARATOR.'includes'.DIRECTORY_SEPARATOR.'upgrade.php"');
+        }
+        if (isset($data['password'])) {
+            $logger->log(LogLevel::INFO, 'Using password: '.$data['password']);
+            $result = wp_install($data['blog_title'], $data['admin'], $data['admin_email'], true, '', $data['password']);
+        } else {
+            $result = wp_install($data['blog_title'], $data['admin'], $data['admin_email'], true);
+        }
+
+        if ($result) {
+            $logger->log(LogLevel::INFO, 'Wordpress successfully installed. Password is '.$result['password']);
+        } else {
+            $logger->log(LogLevel::WARNING, 'Unexpected error occured during this step');
+        }
+        return $result;
     }
 }
