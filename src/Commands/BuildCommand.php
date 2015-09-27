@@ -120,6 +120,8 @@ class BuildCommand extends Command {
         if (!file_exists($file))
             throw new Exception('Information for script "'.$name.'" not found in repository');
         $data = json_decode(file_get_contents($file), true);
+        if ($data === null)
+            throw new Exception('Information for script "'.$name.'" is invalid: json error #'.json_last_error());
         if ($data['name'] != $name)
             throw new Exception('Inconsistency in file "'.$file.'" for script "'.$name.'"');
         return $data;
