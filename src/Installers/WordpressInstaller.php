@@ -37,6 +37,9 @@ class WordpressInstaller extends AbstractInstaller {
     }
 
     static public function installDatabase(array $data, $directory, ConsoleLogger $logger) {
+        // need for wordpress database functionality
+        global $wpdb;
+
         if (!isset($data['blog_title'])) {
             $logger->log(LogLevel::NOTICE, 'Skipping step due to missing blog configuration');
             return true;
