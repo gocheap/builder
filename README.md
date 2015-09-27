@@ -2,7 +2,7 @@
 A tool for installing and setting up different scripts written in PHP.
 
 # Purpose
-Did you even wanted to simplify new installations of popular PHP scripts like Wordpress or Joomla? I too!
+Did you even want to simplify new installations of popular PHP scripts like Wordpress or Joomla? I too!
 
 Now I can present you a tool, that fully installs some popular script with one command in terminal and configuration file:
 ``` sh
@@ -28,7 +28,7 @@ And configuration file is
 
 # Usage
 ``` sh
-build [options] [--] <name> [<version>]
+bin/builder build [options] [--] <name> [<version>]
 ```
 
 Arguments:
