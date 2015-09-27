@@ -2,9 +2,7 @@
 A tool for installing and setting up different scripts written in PHP.
 
 # Purpose
-Did you even want to simplify new installations of popular PHP scripts like Wordpress or Joomla? I too!
-
-Now I can present you a tool, that fully installs some popular script with one command in terminal and configuration file:
+Did you even want to simplify new installations of popular PHP scripts like Wordpress or Joomla? Me too! Now I can present you a tool that fully installs some popular script with one command in terminal and configuration file:
 ``` sh
 php ..\bin\builder build wordpress -c ..\wordpress-config.json -vv
 ```
@@ -37,3 +35,12 @@ Arguments:
 
 Options:
 * `-c`, `--configuration=CONFIGURATION` - You can pass name of file that contains information about script (supports different file formats)
+
+# Supported scripts
+
+For now `builder` supports 2 scripts:
+
+| Script    | Number of versions | Latest version |
+|-----------|--------------------|----------------|
+| Wordpress | 142                | 4.3.1          |
+| Joomla    | 62                 | 3.4.4          |
