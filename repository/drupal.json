@@ -19,6 +19,8 @@
     "download_url": "http://ftp.drupal.org/files/projects/drupal-{%version}.zip",
     "steps": [
         {"action": "download", "message": "Downloading drupal distributive ..."},
-        {"action": "extract", "message": "Extracting drupal distributive ..."}
+        {"action": "extract", "message": "Extracting drupal distributive ...", "prefix_folder": "drupal-{%version}/"},
+        {"action": "user", "trigger": "createConfiguration", "message": "Creating configuration ..."},
+        {"action": "user", "trigger": "createFilesDir", "message": "Creating files directory ..."}
     ]
 }

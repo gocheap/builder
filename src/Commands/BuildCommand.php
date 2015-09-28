@@ -94,7 +94,7 @@ class BuildCommand extends Command {
                     break;
 
                 case 'extract':
-                    $result = call_user_func(array($installer, 'extract'), $archive_tmp, getcwd(), isset($step['prefix_folder']) ? $step['prefix_folder'] : null, $logger);
+                    $result = call_user_func(array($installer, 'extract'), $archive_tmp, getcwd(), isset($step['prefix_folder']) ? str_replace('{%version}', $version, $step['prefix_folder']) : null, $logger);
                     if (!$result) {
                         $output->writeln('<error>Unexpected error occured during this step</error>');
                         return false;
