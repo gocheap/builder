@@ -1,6 +1,6 @@
 {
     "name": "builder/builder",
-    "description": "A tool for bootstrapping and setting up different scripts written in PHP",
+    "description": "A tool for installing and setting up different scripts written in PHP",
     "license": "MIT",
     "require": {
         "cilex/cilex": "~1.1",
