@@ -1,0 +1,29 @@
+{
+    "name": "oscommerce",
+    "installer": "OsCommerceInstaller",
+    "requirements": {
+        "minimal": {
+            "php": "4",
+            "mysql": "3.23"
+        },
+        "optimal": {
+            "php": "5",
+            "mysql": "5"
+        }
+    },
+    "versions": [
+        "2.3.4",
+        "2.3.3.4",
+        "2.3.3.3",
+        "2.3.3.2",
+        "2.3.3.1",
+        "2.3.3",
+        "2.3.1",
+        "2.3"
+    ],
+    "download_url": "https://github.com/osCommerce/oscommerce2/archive/v{%version}.zip",
+    "steps": [
+        {"action": "download", "message": "Downloading OsCommerce2 distributive ..."},
+        {"action": "extract", "message": "Extracting OsCommerce2 distributive ...", "prefix_folder": "oscommerce2-{%version}/"}
+    ]
+}

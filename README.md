@@ -38,7 +38,7 @@ Options:
 
 # Supported scripts
 
-For now `builder` supports 5 scripts:
+For now `builder` supports 7 scripts:
 
 | Script    | Number of versions | Latest version | Downloading & Extracting   | Installation |
 |-----------|--------------------|----------------|----------------------------|--------------|
@@ -47,6 +47,8 @@ For now `builder` supports 5 scripts:
 | Drupal ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Druplicon.vector.svg/100px-Druplicon.vector.svg.png) | 101                | 7.39           | ✓                          | ╳            |
 | Typo3 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Logo_TYPO3.svg/200px-Logo_TYPO3.svg.png) | 78                 | 7.4.0          | ✓                          | ╳            |
 | Magento ![](https://upload.wikimedia.org/wikipedia/commons/1/1d/Magento.png) | 45      | 1.9.2.1      | ✓                          | ╳            |
+| OsCommerce ![](https://upload.wikimedia.org/wikipedia/commons/5/51/Oscommerce_logo.gif)   | 8           | 2.3.4   | ✓                          | ╳            |
+| OpenCart ![](https://upload.wikimedia.org/wikipedia/commons/c/ca/Opencart.png)   | 13     | 2.1.0.0     | ✓                          | ╳            |
 
 # Community help
-To implement all installation processes for every script I need a lot of man-hours. So every addition that improve installation process of any supported script is a big event and will be meet well. 
+To implement all installation processes for every script I need a lot of man-hours. So every addition that improve installation process of any supported script is a big event and will be meet well.
