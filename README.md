@@ -38,11 +38,12 @@ Options:
 
 # Supported scripts
 
-For now `builder` supports 4 scripts:
+For now `builder` supports 5 scripts:
 
 | Script    | Number of versions | Latest version | Downloading & Extracting   | Installation |
 |-----------|--------------------|----------------|----------------------------|--------------|
 | Wordpress ![](https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/WordPress_logo.svg/200px-WordPress_logo.svg.png) | 142                | 4.3.1          | ✓                          | ✓            |
 | Joomla ![](https://upload.wikimedia.org/wikipedia/ru/a/ab/Joomla_logo.png) | 62                 | 3.4.4          | ✓                          | ╳            |
 | Drupal ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Druplicon.vector.svg/100px-Druplicon.vector.svg.png) | 101                | 7.39           | ✓                          | ╳            |
-| Typo3 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Logo_TYPO3.svg/200px-Logo_TYPO3.svg.png) | 78                 | 7.4.0          | ✓                          | ╳            |           
+| Typo3 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Logo_TYPO3.svg/200px-Logo_TYPO3.svg.png) | 78                 | 7.4.0          | ✓                          | ╳            |
+| Magento ![](https://upload.wikimedia.org/wikipedia/commons/1/1d/Magento.png) | 45      | 1.9.2.1      | ✓                          | ╳            |
