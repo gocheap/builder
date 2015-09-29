@@ -38,11 +38,11 @@ Options:
 
 # Supported scripts
 
-For now `builder` supports 3 scripts:
+For now `builder` supports 4 scripts:
 
-| Script    | Number of versions | Latest version |
-|-----------|--------------------|----------------|
-| Wordpress | 142                | 4.3.1          |
-| Joomla    | 62                 | 3.4.4          |
-| Drupal    | 101                | 7.39           |
-| Typo3     | 78                 | 7.4.0          |
+| Script    | Number of versions | Latest version | Downloading & Extracting   | Installation |
+|-----------|--------------------|----------------|----------------------------|--------------|
+| Wordpress | 142                | 4.3.1          | ✓                          | ✓            |
+| Joomla    | 62                 | 3.4.4          | ✓                          | ╳            |
+| Drupal    | 101                | 7.39           | ✓                          | ╳            |
+| Typo3     | 78                 | 7.4.0          | ✓                          | ╳            |           
