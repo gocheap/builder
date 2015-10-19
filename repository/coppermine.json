@@ -1,0 +1,21 @@
+{
+    "name": "coppermine",
+    "installer": "CoppermineInstaller",
+    "requirements": {
+        "minimal": {
+            "php": "4.2",
+            "mysql": "3.23.23"
+        },
+        "optimal": {
+            "php": "5",
+            "mysql": "4"
+        }
+    },
+    "versions": ["1.5.38", "1.5.36", "1.5.34", "1.5.32", "1.5.30", "1.5.28", "1.5.26", "1.5.24", "1.5.22", "1.5.20", "1.5.18", "1.5.16", "1.5.14", "1.5.12", "1.5.10", "1.5.8", "1.5.6", "1.5.4"],
+    "download_url": "http://sourceforge.net/projects/coppermine/files/Coppermine/1.5.x/cpg{%version}.zip/download",
+    "steps": [
+        {"action": "download", "message": "Downloading coppermine distributive ..."},
+        {"action": "extract", "message": "Extracting coppermine distributive ...", "prefix_folder": "cpg15x/"},
+        {"action": "user", "trigger": "setPermissions", "message": "Setting permissions ..."}
+    ]
+}

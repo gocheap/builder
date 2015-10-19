@@ -38,7 +38,7 @@ Options:
 
 # Supported scripts
 
-For now `builder` supports 7 scripts:
+For now `builder` supports 9 scripts:
 
 | Script    | Number of versions | Latest version | Downloading & Extracting   | Installation |
 |-----------|--------------------|----------------|----------------------------|--------------|
@@ -49,6 +49,8 @@ For now `builder` supports 7 scripts:
 | Magento ![](https://upload.wikimedia.org/wikipedia/commons/1/1d/Magento.png) | 45      | 1.9.2.1      | ✓                          | ╳            |
 | OsCommerce ![](https://upload.wikimedia.org/wikipedia/commons/5/51/Oscommerce_logo.gif)   | 8           | 2.3.4   | ✓                          | ╳            |
 | OpenCart ![](https://upload.wikimedia.org/wikipedia/commons/c/ca/Opencart.png)   | 13     | 2.1.0.0     | ✓                          | ╳            |
+| Coppermine ![](https://upload.wikimedia.org/wikipedia/commons/2/27/Coppermine_logo.png)    | 18       | 1.5.38     | ✓                          | ╳            |
+| Gallery ![](https://upload.wikimedia.org/wikipedia/ru/6/6f/Gallery_logo.png)    | 10       | 3.0.9     | ✓                          | ╳            |
 
 # Community help
 To implement all installation processes for every script I need a lot of man-hours. So every addition that improve installation process of any supported script is a big event and will be meet well.
